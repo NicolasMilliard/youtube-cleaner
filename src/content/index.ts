@@ -1,9 +1,9 @@
 import { getSettings } from '../storage';
 
 const ATTRIBUTES = {
-  hideShorts: 'data-youtube-cleaner-hide-shorts',
-  allowShortsOnChannels: 'data-youtube-cleaner-allow-shorts-on-channels',
-  hidePlayables: 'data-youtube-cleaner-hide-playables',
+  hideShorts: 'data-youtube-essentials-hide-shorts',
+  allowShortsOnChannels: 'data-youtube-essentials-allow-shorts-on-channels',
+  hidePlayables: 'data-youtube-essentials-hide-playables',
 } as const;
 
 function applySetting(attribute: string, enabled: boolean): void {

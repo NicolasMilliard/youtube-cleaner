@@ -1,13 +1,15 @@
 {
-  "name": "youtube-cleaner",
+  "name": "youtube-essentials",
   "module": "index.ts",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "bun scripts/build.mjs",
     "dev": "bun scripts/build.mjs --watch",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "check": "bun run format:check && bun run typecheck && bun run build"
   },
   "devDependencies": {
     "@types/bun": "latest",

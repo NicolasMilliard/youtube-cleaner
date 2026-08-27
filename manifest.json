@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Cleaner",
+  "name": "YouTube Essentials",
   "version": "0.1.0",
-  "description": "Hide distracting YouTube content locally.",
+  "description": "YouTube, minus the noise.",
   "permissions": ["storage"],
   "action": {
     "default_popup": "popup/popup.html"
