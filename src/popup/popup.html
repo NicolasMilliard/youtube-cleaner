@@ -7,39 +7,72 @@
   </head>
 
   <body>
-    <main>
-      <h1>YouTube Cleaner</h1>
+    <main class="popup">
+      <header class="popup__header">
+        <div>
+          <h1>YouTube Cleaner</h1>
+          <p>Hide distracting YouTube content locally.</p>
+        </div>
+      </header>
 
-      <fieldset class="theme-selector">
-        <legend>Theme</legend>
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Content</h2>
+        </div>
 
-        <div class="theme-options">
-          <label>
-            <input type="radio" name="theme" value="system" />
-            <span>System</span>
-          </label>
+        <div class="setting-row">
+          <div class="setting-row__content">
+            <span class="setting-row__label">Hide Shorts</span>
+            <span class="setting-row__description">
+              Remove Shorts from navigation and recommendations.
+            </span>
+          </div>
 
-          <label>
-            <input type="radio" name="theme" value="light" />
-            <span>Light</span>
-          </label>
-
-          <label>
-            <input type="radio" name="theme" value="dark" />
-            <span>Dark</span>
+          <label class="switch">
+            <input id="hide-shorts" type="checkbox" />
+            <span class="switch__control"></span>
           </label>
         </div>
-      </fieldset>
 
-      <label>
-        <input id="hide-shorts" type="checkbox" />
-        Hide Shorts
-      </label>
+        <div class="setting-row">
+          <div class="setting-row__content">
+            <span class="setting-row__label">Hide Playables</span>
+            <span class="setting-row__description"> Remove Playables from the home feed. </span>
+          </div>
 
-      <label>
-        <input id="hide-playables" type="checkbox" />
-        Hide Playables
-      </label>
+          <label class="switch">
+            <input id="hide-playables" type="checkbox" />
+            <span class="switch__control"></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Appearance</h2>
+        </div>
+
+        <fieldset class="theme-selector">
+          <legend class="sr-only">Theme</legend>
+
+          <div class="theme-options">
+            <label>
+              <input type="radio" name="theme" value="system" />
+              <span>System</span>
+            </label>
+
+            <label>
+              <input type="radio" name="theme" value="light" />
+              <span>Light</span>
+            </label>
+
+            <label>
+              <input type="radio" name="theme" value="dark" />
+              <span>Dark</span>
+            </label>
+          </div>
+        </fieldset>
+      </section>
     </main>
 
     <script src="./popup.js"></script>
