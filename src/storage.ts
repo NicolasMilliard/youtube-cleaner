@@ -2,12 +2,14 @@ export type Theme = 'system' | 'light' | 'dark';
 
 export type Settings = {
   hideShorts: boolean;
+  allowShortsOnChannels: boolean;
   hidePlayables: boolean;
   theme: Theme;
 };
 
 export const DEFAULT_SETTINGS: Settings = {
   hideShorts: true,
+  allowShortsOnChannels: true,
   hidePlayables: true,
   theme: 'system',
 };
@@ -23,6 +25,10 @@ export async function getSettings(): Promise<Settings> {
   return {
     hideShorts:
       typeof stored.hideShorts === 'boolean' ? stored.hideShorts : DEFAULT_SETTINGS.hideShorts,
+    allowShortsOnChannels:
+      typeof stored.allowShortsOnChannels === 'boolean'
+        ? stored.allowShortsOnChannels
+        : DEFAULT_SETTINGS.allowShortsOnChannels,
     hidePlayables:
       typeof stored.hidePlayables === 'boolean'
         ? stored.hidePlayables

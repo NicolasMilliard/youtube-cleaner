@@ -1,27 +1,72 @@
-/* Shorts - Sidebar */
+/* ==========================================================================
+   Shorts
+   ========================================================================== */
 
-html[data-youtube-cleaner-hide-shorts]
-  ytd-guide-entry-renderer:has(#endpoint[title='Shorts']),
-html[data-youtube-cleaner-hide-shorts]
-  ytd-mini-guide-entry-renderer:has([title='Shorts']),
+/* Sidebar - Always hidden when Shorts are disabled */
 
-/* Shorts - Shelves */
+html[data-youtube-cleaner-hide-shorts] ytd-guide-entry-renderer:has(#endpoint[title='Shorts']),
+html[data-youtube-cleaner-hide-shorts] ytd-mini-guide-entry-renderer:has([title='Shorts']) {
+  display: none !important;
+}
 
-html[data-youtube-cleaner-hide-shorts] ytd-reel-shelf-renderer,
-html[data-youtube-cleaner-hide-shorts] ytd-rich-shelf-renderer[is-shorts],
-html[data-youtube-cleaner-hide-shorts]
+/*
+ * Shorts content - Strict mode
+ *
+ * When Shorts are disabled and there is no channel exception,
+ * hide Shorts everywhere.
+ */
+
+html[data-youtube-cleaner-hide-shorts]:not([data-youtube-cleaner-allow-shorts-on-channels])
+  ytd-reel-shelf-renderer,
+html[data-youtube-cleaner-hide-shorts]:not([data-youtube-cleaner-allow-shorts-on-channels])
+  ytd-rich-shelf-renderer[is-shorts],
+html[data-youtube-cleaner-hide-shorts]:not([data-youtube-cleaner-allow-shorts-on-channels])
   ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
-
-/* Shorts - Recommendations */
-
-html[data-youtube-cleaner-hide-shorts]
+html[data-youtube-cleaner-hide-shorts]:not([data-youtube-cleaner-allow-shorts-on-channels])
   ytd-rich-item-renderer:has(a[href^='/shorts/']),
-html[data-youtube-cleaner-hide-shorts]
+html[data-youtube-cleaner-hide-shorts]:not([data-youtube-cleaner-allow-shorts-on-channels])
   ytd-video-renderer:has(a[href^='/shorts/']) {
   display: none !important;
 }
 
-/* Playables - Home feed */
+/*
+ * Shorts content - Allow on channel pages
+ *
+ * Keep hiding Shorts everywhere except inside a creator channel.
+ */
+
+html[data-youtube-cleaner-hide-shorts][data-youtube-cleaner-allow-shorts-on-channels]
+  ytd-reel-shelf-renderer:not(ytd-browse[page-subtype='channels'] *),
+html[data-youtube-cleaner-hide-shorts][data-youtube-cleaner-allow-shorts-on-channels]
+  ytd-rich-shelf-renderer[is-shorts]:not(ytd-browse[page-subtype='channels'] *),
+html[data-youtube-cleaner-hide-shorts][data-youtube-cleaner-allow-shorts-on-channels]
+  ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]):not(
+    ytd-browse[page-subtype='channels'] *
+  ),
+html[data-youtube-cleaner-hide-shorts][data-youtube-cleaner-allow-shorts-on-channels]
+  ytd-rich-item-renderer:has(a[href^='/shorts/']):not(ytd-browse[page-subtype='channels'] *),
+html[data-youtube-cleaner-hide-shorts][data-youtube-cleaner-allow-shorts-on-channels]
+  ytd-video-renderer:has(a[href^='/shorts/']):not(ytd-browse[page-subtype='channels'] *) {
+  display: none !important;
+}
+
+/*
+ * Channel Shorts tab
+ *
+ * Hide it only when channel Shorts are NOT explicitly allowed.
+ */
+
+html[data-youtube-cleaner-hide-shorts]:not([data-youtube-cleaner-allow-shorts-on-channels])
+  ytd-browse[page-subtype='channels']
+  yt-tab-shape[tab-title='Shorts'] {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Playables
+   ========================================================================== */
+
+/* Home feed */
 
 html[data-youtube-cleaner-hide-playables] ytd-rich-section-renderer:has(a[href^='/playables/']) {
   display: none !important;

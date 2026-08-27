@@ -128,6 +128,31 @@ body {
   border-top: 0.0625rem solid var(--color-border);
 }
 
+.setting-row + .setting-row--nested {
+  margin-top: 0.625rem;
+  padding-top: 0;
+  padding-left: 1rem;
+  border-top: 0;
+}
+
+.setting-row--nested .setting-row__label {
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+}
+
+.setting-row--nested .setting-row__description {
+  font-size: 0.6875rem;
+}
+
+.setting-row--nested .setting-row__label {
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+}
+
+.setting-row--nested .setting-row__description {
+  font-size: 0.6875rem;
+}
+
 .setting-row__content {
   display: flex;
   flex-direction: column;

@@ -2,6 +2,7 @@ import { getSettings } from '../storage';
 
 const ATTRIBUTES = {
   hideShorts: 'data-youtube-cleaner-hide-shorts',
+  allowShortsOnChannels: 'data-youtube-cleaner-allow-shorts-on-channels',
   hidePlayables: 'data-youtube-cleaner-hide-playables',
 } as const;
 
@@ -13,6 +14,8 @@ async function init(): Promise<void> {
   const settings = await getSettings();
 
   applySetting(ATTRIBUTES.hideShorts, settings.hideShorts);
+  applySetting(ATTRIBUTES.allowShortsOnChannels, settings.allowShortsOnChannels);
+
   applySetting(ATTRIBUTES.hidePlayables, settings.hidePlayables);
 }
 
@@ -25,6 +28,12 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 
   if (typeof hideShorts === 'boolean') {
     applySetting(ATTRIBUTES.hideShorts, hideShorts);
+  }
+
+  const allowShortsOnChannels = changes.allowShortsOnChannels?.newValue;
+
+  if (typeof allowShortsOnChannels === 'boolean') {
+    applySetting(ATTRIBUTES.allowShortsOnChannels, allowShortsOnChannels);
   }
 
   const hidePlayables = changes.hidePlayables?.newValue;
