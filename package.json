@@ -1,0 +1,21 @@
+{
+  "name": "youtube-cleaner",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bun scripts/build.mjs",
+    "dev": "bun scripts/build.mjs --watch",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "chrome-types": "^0.1.440",
+    "esbuild": "^0.28.2",
+    "prettier": "^3.9.6"
+  },
+  "peerDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
