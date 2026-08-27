@@ -1,27 +1,36 @@
 :root,
-[data-theme='light'] {
+:root[data-theme='light'] {
   --color-background: #ffffff;
-  --color-surface: #f5f5f5;
+  --color-surface: #f4f4f5;
+  --color-surface-hover: #e4e4e7;
   --color-text: #18181b;
   --color-text-secondary: #71717a;
-  --color-border: #e4e4e7;
+  --color-border: #d4d4d8;
+  --color-accent: #18181b;
+  --color-accent-text: #ffffff;
 }
 
-[data-theme='dark'] {
+:root[data-theme='dark'] {
   --color-background: #18181b;
   --color-surface: #27272a;
+  --color-surface-hover: #3f3f46;
   --color-text: #fafafa;
   --color-text-secondary: #a1a1aa;
   --color-border: #3f3f46;
+  --color-accent: #fafafa;
+  --color-accent-text: #18181b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --color-background: #18181b;
     --color-surface: #27272a;
+    --color-surface-hover: #3f3f46;
     --color-text: #fafafa;
     --color-text-secondary: #a1a1aa;
     --color-border: #3f3f46;
+    --color-accent: #fafafa;
+    --color-accent-text: #18181b;
   }
 }
 
@@ -64,4 +73,58 @@ label {
   gap: 1rem;
 
   font-size: 0.875rem;
+}
+
+.theme-selector {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.theme-selector legend {
+  margin-bottom: 0.5rem;
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+}
+
+.theme-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0.1875rem;
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+}
+
+.theme-options label {
+  display: block;
+  cursor: pointer;
+}
+
+.theme-options input {
+  position: absolute;
+  width: 0.0625rem;
+  height: 0.0625rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme-options span {
+  display: block;
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.375rem;
+
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.theme-options input:checked + span {
+  color: var(--color-accent-text);
+  background: var(--color-accent);
+}
+
+.theme-options input:focus-visible + span {
+  outline: 0.125rem solid var(--color-text);
+  outline-offset: 0.125rem;
 }
