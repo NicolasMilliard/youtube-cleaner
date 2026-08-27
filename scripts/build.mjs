@@ -5,19 +5,24 @@ const watch = process.argv.includes('--watch');
 
 async function copyStaticFiles() {
   await mkdir('dist/popup', { recursive: true });
+  await mkdir('dist/content', { recursive: true });
 
   await cp('manifest.json', 'dist/manifest.json');
   await cp('src/popup/popup.html', 'dist/popup/popup.html');
   await cp('src/popup/popup.css', 'dist/popup/popup.css');
+  await cp('src/content/content.css', 'dist/content/content.css');
 }
 
 await rm('dist', { recursive: true, force: true });
 await copyStaticFiles();
 
 const options = {
-  entryPoints: ['src/popup/popup.ts'],
+  entryPoints: {
+    'popup/popup': 'src/popup/popup.ts',
+    'content/index': 'src/content/index.ts',
+  },
   bundle: true,
-  outfile: 'dist/popup/popup.js',
+  outdir: 'dist',
   target: 'chrome120',
 };
 

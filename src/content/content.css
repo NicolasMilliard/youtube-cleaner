@@ -1,0 +1,19 @@
+/* Sidebar */
+html[data-youtube-cleaner-hide-shorts]
+  ytd-guide-entry-renderer:has(#endpoint[title='Shorts']),
+html[data-youtube-cleaner-hide-shorts]
+  ytd-mini-guide-entry-renderer:has([title='Shorts']),
+
+/* Shorts shelves */
+html[data-youtube-cleaner-hide-shorts] ytd-reel-shelf-renderer,
+html[data-youtube-cleaner-hide-shorts] ytd-rich-shelf-renderer[is-shorts],
+html[data-youtube-cleaner-hide-shorts]
+  ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+
+/* Individual Shorts recommendations */
+html[data-youtube-cleaner-hide-shorts]
+  ytd-rich-item-renderer:has(a[href^='/shorts/']),
+html[data-youtube-cleaner-hide-shorts]
+  ytd-video-renderer:has(a[href^='/shorts/']) {
+  display: none !important;
+}
