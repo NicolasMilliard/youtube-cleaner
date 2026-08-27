@@ -9,6 +9,10 @@ const staticFiles = [
   ['src/popup/popup.html', 'dist/popup/popup.html'],
   ['src/popup/popup.css', 'dist/popup/popup.css'],
   ['src/content/content.css', 'dist/content/content.css'],
+  ['src/assets/icons/icon-16.png', 'dist/icons/icon-16.png'],
+  ['src/assets/icons/icon-32.png', 'dist/icons/icon-32.png'],
+  ['src/assets/icons/icon-48.png', 'dist/icons/icon-48.png'],
+  ['src/assets/icons/icon-128.png', 'dist/icons/icon-128.png'],
 ];
 
 async function copyStaticFile(source, destination) {
