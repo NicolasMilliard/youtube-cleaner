@@ -63,6 +63,25 @@ html[data-youtube-essentials-hide-shorts]:not([data-youtube-essentials-allow-sho
 }
 
 /* ==========================================================================
+   Shorts - Search
+   ========================================================================== */
+
+/* Shorts results shelf */
+
+html[data-youtube-essentials-hide-shorts]
+  ytd-search
+  grid-shelf-view-model:has(a[href^='/shorts/']) {
+  display: none !important;
+}
+
+/* Shorts filter chip */
+
+html[data-youtube-essentials-hide-shorts]
+  yt-chip-cloud-chip-renderer[data-youtube-essentials-shorts-filter] {
+  display: none !important;
+}
+
+/* ==========================================================================
    Playables
    ========================================================================== */
 

@@ -44,3 +44,45 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 });
 
 void init();
+
+const SHORTS_FILTER_SELECTOR = 'yt-chip-cloud-chip-renderer';
+const SHORTS_FILTER_ATTRIBUTE = 'data-youtube-essentials-shorts-filter';
+
+function markShortsFilterChip(chip: Element): void {
+  if (!chip.closest('ytd-search')) {
+    return;
+  }
+
+  const isShortsFilter = chip.textContent?.trim() === 'Shorts';
+
+  chip.toggleAttribute(SHORTS_FILTER_ATTRIBUTE, isShortsFilter);
+}
+
+function scanForShortsFilters(node: Node): void {
+  if (!(node instanceof Element)) {
+    return;
+  }
+
+  const closestChip = node.closest(SHORTS_FILTER_SELECTOR);
+
+  if (closestChip) {
+    markShortsFilterChip(closestChip);
+  }
+
+  node.querySelectorAll(SHORTS_FILTER_SELECTOR).forEach(markShortsFilterChip);
+}
+
+const observer = new MutationObserver((mutations) => {
+  for (const mutation of mutations) {
+    for (const node of mutation.addedNodes) {
+      scanForShortsFilters(node);
+    }
+  }
+});
+
+observer.observe(document, {
+  childList: true,
+  subtree: true,
+});
+
+scanForShortsFilters(document.documentElement);
