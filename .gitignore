@@ -5,6 +5,7 @@ node_modules
 out
 dist
 *.tgz
+youtube-essentials.zip
 
 # code coverage
 coverage

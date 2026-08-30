@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "bun run format:check && bun run typecheck && bun run build"
+    "check": "bun run format:check && bun run typecheck && bun run build",
+    "package": "bun run check && rm -f youtube-essentials.zip && cd dist && zip -r ../youtube-essentials.zip ."
   },
   "devDependencies": {
     "@types/bun": "latest",
