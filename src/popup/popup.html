@@ -22,38 +22,59 @@
 
         <div class="setting-row">
           <div class="setting-row__content">
-            <span class="setting-row__label">Hide Shorts</span>
-            <span class="setting-row__description">
+            <span id="hide-shorts-label" class="setting-row__label">Hide Shorts</span>
+            <span id="hide-shorts-description" class="setting-row__description">
               Remove Shorts from navigation and recommendations.
             </span>
           </div>
 
           <label class="switch">
-            <input id="hide-shorts" type="checkbox" />
+            <input
+              id="hide-shorts"
+              type="checkbox"
+              aria-labelledby="hide-shorts-label"
+              aria-describedby="hide-shorts-description"
+            />
             <span class="switch__control"></span>
           </label>
         </div>
 
         <div class="setting-row setting-row--nested">
           <div class="setting-row__content">
-            <span class="setting-row__label">Allow on channels</span>
-            <span class="setting-row__description"> Keep Shorts available on creator pages. </span>
+            <span id="allow-shorts-on-channels-label" class="setting-row__label">
+              Allow on channels
+            </span>
+            <span id="allow-shorts-on-channels-description" class="setting-row__description">
+              Keep Shorts available on creator pages.
+            </span>
           </div>
 
           <label class="switch">
-            <input id="allow-shorts-on-channels" type="checkbox" />
+            <input
+              id="allow-shorts-on-channels"
+              type="checkbox"
+              aria-labelledby="allow-shorts-on-channels-label"
+              aria-describedby="allow-shorts-on-channels-description"
+            />
             <span class="switch__control"></span>
           </label>
         </div>
 
         <div class="setting-row">
           <div class="setting-row__content">
-            <span class="setting-row__label">Hide Playables</span>
-            <span class="setting-row__description"> Remove Playables from the home feed. </span>
+            <span id="hide-playables-label" class="setting-row__label">Hide Playables</span>
+            <span id="hide-playables-description" class="setting-row__description">
+              Remove Playables from the home feed.
+            </span>
           </div>
 
           <label class="switch">
-            <input id="hide-playables" type="checkbox" />
+            <input
+              id="hide-playables"
+              type="checkbox"
+              aria-labelledby="hide-playables-label"
+              aria-describedby="hide-playables-description"
+            />
             <span class="switch__control"></span>
           </label>
         </div>

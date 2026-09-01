@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "YouTube Essentials",
-  "short_name": "YT Essentials",
-  "version": "1.0.0",
+  "short_name": "Essentials",
+  "version": "1.0.1",
   "description": "Hide Shorts and Playables from YouTube while keeping optional Shorts access on creator channels.",
   "icons": {
     "16": "icons/icon-16.png",
