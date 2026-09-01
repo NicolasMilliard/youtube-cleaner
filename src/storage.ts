@@ -15,7 +15,12 @@ export const DEFAULT_SETTINGS: Settings = {
 };
 
 export async function getSettings(): Promise<Settings> {
-  const stored = await chrome.storage.local.get(['hideShorts', 'hidePlayables', 'theme']);
+  const stored = await chrome.storage.local.get([
+    'hideShorts',
+    'allowShortsOnChannels',
+    'hidePlayables',
+    'theme',
+  ]);
 
   const theme =
     stored.theme === 'light' || stored.theme === 'dark' || stored.theme === 'system'
