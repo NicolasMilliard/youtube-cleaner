@@ -29,6 +29,7 @@ These preferences currently include:
 - Whether Shorts are hidden
 - Whether Shorts remain available on creator channel pages
 - Whether Playables are hidden
+- Whether featured videos are hidden
 - Your selected appearance theme
 
 These settings remain on your device and are not transmitted to the developer or any third party.
@@ -37,13 +38,13 @@ These settings remain on your device and are not transmitted to the developer or
 
 YouTube Essentials runs only on YouTube pages.
 
-Access to YouTube is used solely to modify the interface according to your preferences, such as hiding Shorts, Playables, and related navigation or recommendation elements.
+Access to YouTube is used solely to modify the interface according to your preferences, such as hiding Shorts, Playables, featured videos, and related navigation or recommendation elements.
 
 ## Website content processing
 
 To identify the interface elements that should be hidden, YouTube Essentials processes a limited amount of YouTube page structure locally in your browser.
 
-This may include inspecting DOM elements, labels, attributes, and links associated with Shorts, Playables, or related interface controls.
+This may include inspecting DOM elements, labels, attributes, and links associated with Shorts, Playables, featured videos, or related interface controls.
 
 This information:
 
