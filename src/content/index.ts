@@ -4,6 +4,7 @@ const ATTRIBUTES = {
   hideShorts: 'data-youtube-essentials-hide-shorts',
   allowShortsOnChannels: 'data-youtube-essentials-allow-shorts-on-channels',
   hidePlayables: 'data-youtube-essentials-hide-playables',
+  hideYtFeatured: 'data-youtube-essentials-hide-yt-featured',
 } as const;
 
 function applySetting(attribute: string, enabled: boolean): void {
@@ -17,6 +18,7 @@ async function init(): Promise<void> {
   applySetting(ATTRIBUTES.allowShortsOnChannels, settings.allowShortsOnChannels);
 
   applySetting(ATTRIBUTES.hidePlayables, settings.hidePlayables);
+  applySetting(ATTRIBUTES.hideYtFeatured, settings.hideYtFeatured);
 }
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
@@ -40,6 +42,12 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 
   if (typeof hidePlayables === 'boolean') {
     applySetting(ATTRIBUTES.hidePlayables, hidePlayables);
+  }
+
+  const hideYtFeatured = changes.hideYtFeatured?.newValue;
+
+  if (typeof hideYtFeatured === 'boolean') {
+    applySetting(ATTRIBUTES.hideYtFeatured, hideYtFeatured);
   }
 });
 

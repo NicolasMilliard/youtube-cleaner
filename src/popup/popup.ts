@@ -35,13 +35,16 @@ const allowShortsOnChannelsToggle = getRequiredElement<HTMLInputElement>(
 
 const playablesToggle = getRequiredElement<HTMLInputElement>('#hide-playables');
 
+const ytFeatured = getRequiredElement<HTMLInputElement>('#hide-yt-featured');
+
 async function init(): Promise<void> {
   const settings = await getSettings();
 
   shortsToggle.checked = settings.hideShorts;
-  playablesToggle.checked = settings.hidePlayables;
   allowShortsOnChannelsToggle.checked = settings.allowShortsOnChannels;
   allowShortsOnChannelsToggle.disabled = !settings.hideShorts;
+  playablesToggle.checked = settings.hidePlayables;
+  ytFeatured.checked = settings.hideYtFeatured;
 
   setThemeControl(settings.theme);
   applyTheme(settings.theme);
@@ -72,6 +75,10 @@ allowShortsOnChannelsToggle.addEventListener('change', async () => {
 
 playablesToggle.addEventListener('change', async () => {
   await setSetting('hidePlayables', playablesToggle.checked);
+});
+
+ytFeatured.addEventListener('change', async () => {
+  await setSetting('hideYtFeatured', ytFeatured.checked);
 });
 
 void init();

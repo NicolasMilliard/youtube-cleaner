@@ -90,3 +90,14 @@ html[data-youtube-essentials-hide-shorts]
 html[data-youtube-essentials-hide-playables] ytd-rich-section-renderer:has(a[href^='/playables/']) {
   display: none !important;
 }
+
+/* ==========================================================================
+   Featured videos
+   ========================================================================== */
+
+/* Home feed */
+
+html[data-youtube-essentials-hide-yt-featured]
+  ytd-rich-section-renderer:has(ytd-brand-video-singleton-renderer) {
+  display: none !important;
+}

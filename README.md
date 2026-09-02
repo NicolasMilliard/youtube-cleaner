@@ -13,6 +13,7 @@ No account. No analytics. No backend. Your preferences stay in your browser.
 - Hide Shorts from navigation and recommendations
 - Optionally keep Shorts accessible on creator channel pages
 - Hide YouTube Playables from the home feed
+- Hide featured videos from the home feed
 - Light, dark, and system themes
 - Settings stored locally with `chrome.storage.local`
 - No tracking or external requests
