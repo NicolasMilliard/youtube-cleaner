@@ -21,11 +21,6 @@ async function init(): Promise<void> {
   const startedOnCanonicalHome = isCanonicalHome();
   const settings = await getSettings();
 
-  if (!settings) {
-    startShortsFilterObserver();
-    return;
-  }
-
   if (startedOnCanonicalHome && settings.redirectHome) {
     window.location.replace('/feed/subscriptions');
     return;
