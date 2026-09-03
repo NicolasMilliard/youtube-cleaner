@@ -11,14 +11,33 @@ function applySetting(attribute: string, enabled: boolean): void {
   document.documentElement.toggleAttribute(attribute, enabled);
 }
 
+function isCanonicalHome(): boolean {
+  const { origin, pathname, search, hash } = window.location;
+
+  return origin === 'https://www.youtube.com' && pathname === '/' && search === '' && hash === '';
+}
+
 async function init(): Promise<void> {
+  const startedOnCanonicalHome = isCanonicalHome();
   const settings = await getSettings();
+
+  if (!settings) {
+    startShortsFilterObserver();
+    return;
+  }
+
+  if (startedOnCanonicalHome && settings.redirectHome) {
+    window.location.replace('/feed/subscriptions');
+    return;
+  }
 
   applySetting(ATTRIBUTES.hideShorts, settings.hideShorts);
   applySetting(ATTRIBUTES.allowShortsOnChannels, settings.allowShortsOnChannels);
 
   applySetting(ATTRIBUTES.hidePlayables, settings.hidePlayables);
   applySetting(ATTRIBUTES.hideYtFeatured, settings.hideYtFeatured);
+
+  startShortsFilterObserver();
 }
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
@@ -51,8 +70,6 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
   }
 });
 
-void init();
-
 const SHORTS_FILTER_SELECTOR = 'yt-chip-cloud-chip-renderer';
 const SHORTS_FILTER_ATTRIBUTE = 'data-youtube-essentials-shorts-filter';
 
@@ -80,17 +97,21 @@ function scanForShortsFilters(node: Node): void {
   node.querySelectorAll(SHORTS_FILTER_SELECTOR).forEach(markShortsFilterChip);
 }
 
-const observer = new MutationObserver((mutations) => {
-  for (const mutation of mutations) {
-    for (const node of mutation.addedNodes) {
-      scanForShortsFilters(node);
+function startShortsFilterObserver(): void {
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        scanForShortsFilters(node);
+      }
     }
-  }
-});
+  });
 
-observer.observe(document, {
-  childList: true,
-  subtree: true,
-});
+  observer.observe(document, {
+    childList: true,
+    subtree: true,
+  });
 
-scanForShortsFilters(document.documentElement);
+  scanForShortsFilters(document.documentElement);
+}
+
+void init();

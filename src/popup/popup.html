@@ -21,12 +21,12 @@
         </div>
 
         <div class="setting-row">
-          <div class="setting-row__content">
+          <label class="setting-row__content" for="hide-shorts">
             <span id="hide-shorts-label" class="setting-row__label">Hide Shorts</span>
             <span id="hide-shorts-description" class="setting-row__description">
               Remove Shorts from navigation and recommendations.
             </span>
-          </div>
+          </label>
 
           <label class="switch">
             <input
@@ -40,14 +40,14 @@
         </div>
 
         <div class="setting-row setting-row--nested">
-          <div class="setting-row__content">
+          <label class="setting-row__content" for="allow-shorts-on-channels">
             <span id="allow-shorts-on-channels-label" class="setting-row__label">
               Allow on channels
             </span>
             <span id="allow-shorts-on-channels-description" class="setting-row__description">
               Keep Shorts available on creator pages.
             </span>
-          </div>
+          </label>
 
           <label class="switch">
             <input
@@ -61,12 +61,12 @@
         </div>
 
         <div class="setting-row">
-          <div class="setting-row__content">
+          <label class="setting-row__content" for="hide-playables">
             <span id="hide-playables-label" class="setting-row__label">Hide Playables</span>
             <span id="hide-playables-description" class="setting-row__description">
               Remove Playables from the home feed.
             </span>
-          </div>
+          </label>
 
           <label class="switch">
             <input
@@ -80,12 +80,12 @@
         </div>
 
         <div class="setting-row">
-          <div class="setting-row__content">
+          <label class="setting-row__content" for="hide-yt-featured">
             <span id="hide-yt-featured-label" class="setting-row__label">Hide featured videos</span>
             <span id="hide-yt-featured-description" class="setting-row__description">
               Remove videos featured by YouTube from the home feed.
             </span>
-          </div>
+          </label>
 
           <label class="switch">
             <input
@@ -93,6 +93,33 @@
               type="checkbox"
               aria-labelledby="hide-yt-featured-label"
               aria-describedby="hide-yt-featured-description"
+            />
+            <span class="switch__control"></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Home</h2>
+        </div>
+
+        <div class="setting-row">
+          <label class="setting-row__content" for="redirect-home">
+            <span id="redirect-home-label" class="setting-row__label"
+              >Open Subscriptions by default</span
+            >
+            <span id="redirect-home-description" class="setting-row__description">
+              Open YouTube on your Subscriptions feed.
+            </span>
+          </label>
+
+          <label class="switch">
+            <input
+              id="redirect-home"
+              type="checkbox"
+              aria-labelledby="redirect-home-label"
+              aria-describedby="redirect-home-description"
             />
             <span class="switch__control"></span>
           </label>

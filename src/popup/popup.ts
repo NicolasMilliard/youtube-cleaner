@@ -28,14 +28,13 @@ function getRequiredElement<T extends Element>(selector: string): T {
 }
 
 const shortsToggle = getRequiredElement<HTMLInputElement>('#hide-shorts');
-
 const allowShortsOnChannelsToggle = getRequiredElement<HTMLInputElement>(
   '#allow-shorts-on-channels',
 );
 
 const playablesToggle = getRequiredElement<HTMLInputElement>('#hide-playables');
-
-const ytFeatured = getRequiredElement<HTMLInputElement>('#hide-yt-featured');
+const ytFeaturedToggle = getRequiredElement<HTMLInputElement>('#hide-yt-featured');
+const redirectHomeToggle = getRequiredElement<HTMLInputElement>('#redirect-home');
 
 async function init(): Promise<void> {
   const settings = await getSettings();
@@ -44,7 +43,8 @@ async function init(): Promise<void> {
   allowShortsOnChannelsToggle.checked = settings.allowShortsOnChannels;
   allowShortsOnChannelsToggle.disabled = !settings.hideShorts;
   playablesToggle.checked = settings.hidePlayables;
-  ytFeatured.checked = settings.hideYtFeatured;
+  ytFeaturedToggle.checked = settings.hideYtFeatured;
+  redirectHomeToggle.checked = settings.redirectHome;
 
   setThemeControl(settings.theme);
   applyTheme(settings.theme);
@@ -77,8 +77,12 @@ playablesToggle.addEventListener('change', async () => {
   await setSetting('hidePlayables', playablesToggle.checked);
 });
 
-ytFeatured.addEventListener('change', async () => {
-  await setSetting('hideYtFeatured', ytFeatured.checked);
+ytFeaturedToggle.addEventListener('change', async () => {
+  await setSetting('hideYtFeatured', ytFeaturedToggle.checked);
+});
+
+redirectHomeToggle.addEventListener('change', async () => {
+  await setSetting('redirectHome', redirectHomeToggle.checked);
 });
 
 void init();
