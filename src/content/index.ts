@@ -11,8 +11,19 @@ function applySetting(attribute: string, enabled: boolean): void {
   document.documentElement.toggleAttribute(attribute, enabled);
 }
 
+function isCanonicalHome(): boolean {
+  const { origin, pathname, search, hash } = window.location;
+
+  return origin === 'https://www.youtube.com' && pathname === '/' && search === '' && hash === '';
+}
+
 async function init(): Promise<void> {
   const settings = await getSettings();
+
+  if (settings.redirectHome && isCanonicalHome()) {
+    window.location.replace('/feed/subscriptions');
+    return;
+  }
 
   applySetting(ATTRIBUTES.hideShorts, settings.hideShorts);
   applySetting(ATTRIBUTES.allowShortsOnChannels, settings.allowShortsOnChannels);
